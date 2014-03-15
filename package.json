@@ -1,0 +1,16 @@
+{
+  "name": "atom-memolist-new",
+  "version": "0.0.1",
+  "description": "simply memo on atom editor.",
+  "repository": "https://github.com/tgfjt/atom-memolist-new",
+  "bugs": {
+    "url": "https://github.com/tgfjt/atom-memolist-new/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "moment": "~2.5.1"
+  }
+}
