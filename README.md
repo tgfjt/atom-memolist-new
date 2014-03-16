@@ -11,7 +11,8 @@ create New simply memo on atom editor.
 * cancel `ctrl+alt+n`
 
 ## Note
-* :astonished: for grep memolist with: [atom-memolist](https://github.com/tgfjt/atom-memolist)
+* :astonished: for show all memolist with: [atom-memolist](https://github.com/tgfjt/atom-memolist)
+* :astonished: for grep memo with: [atom-memolist-grep](https://github.com/tgfjt/atom-memolist-grep)
 
 ## Link
 for Sublime Text: [Sublime-memolist](https://github.com/tgfjt/Sublime-memolist)
