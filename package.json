@@ -1,6 +1,6 @@
 {
   "name": "atom-memolist-new",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "create New simply memo on atom editor.",
   "repository": "https://github.com/tgfjt/atom-memolist-new",
   "bugs": {
