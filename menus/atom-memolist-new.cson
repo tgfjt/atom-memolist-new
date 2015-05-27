@@ -1,7 +1,8 @@
 # See https://atom.io/docs/latest/creating-a-package#menus for more details
 'context-menu':
-  '.overlayer':
-      'New atom-memolist': 'atom-memolist-new:toggle'
+  'atom-workspace': [
+    { label: 'New atom-memolist', command: 'atom-memolist-new:toggle' }
+  ]
 
 'menu': [
   {

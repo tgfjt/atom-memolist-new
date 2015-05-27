@@ -1,4 +1,4 @@
-{View, EditorView, $} = require 'atom'
+{View, TextEditorView, $} = require 'atom-space-pen-views'
 moment = require 'moment'
 path = require 'path'
 
@@ -10,10 +10,10 @@ class AtomMemolistNewView extends View
     @atomMemolistNew = new AtomMemolistNewView(state.atomMemolistNew)
 
   initialize: ->
-    atom.workspaceView.command 'atom-memolist-new:toggle', => @toggle()
-    @miniEditor.setPlaceholderText('Enter a Name for new Memo');
-    @on 'core:confirm', => @confirm()
-    @on 'core:cancel', => @detach()
+    atom.commands.add "atom-workspace",
+      'atom-memolist-new:toggle', => @toggle()
+    atom.commands.add(this[0], 'core:confirm', () => this.confirm())
+    atom.commands.add(this[0], 'core:cancel', () => this.detach())
 
   @detaching: false
 
@@ -25,17 +25,21 @@ class AtomMemolistNewView extends View
 
   @content: (params)->
     @div class: 'atom-memolist-new overlay from-top', =>
-      @subview 'miniEditor', new EditorView({mini:true})
+      @subview 'miniEditor', new TextEditorView({
+        mini: true
+        placeholderText: 'Enter a Name for new Memo'
+      })
+
 
   confirm: ->
-    title = @miniEditor.getEditor().getText()
+    title = @miniEditor.getText()
 
     memodir = atom.config.get('atom-memolist.memo_dir_path')
     today = moment().format('YYYY-MM-DD-')
     newFile = path.join(memodir, today + title + '.md')
 
     try
-      atom.workspaceView.open newFile
+      atom.workspace.open newFile
       @detach()
     catch error
       console.log error.message
@@ -51,8 +55,6 @@ class AtomMemolistNewView extends View
 
     if @previouslyFocusedElement?.isOnDom()
       @previouslyFocusedElement.focus()
-    else
-      atom.workspaceView.focus()
 
     super
 
@@ -62,5 +64,5 @@ class AtomMemolistNewView extends View
     console.log 'atom-memolist-new: attach'
     @detaching = true
     @previouslyFocusedElement = $(':focus')
-    atom.workspaceView.append(this)
+    atom.workspace.addTopPanel(item: this)
     @miniEditor.focus()
